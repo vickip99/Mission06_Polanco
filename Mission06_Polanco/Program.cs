@@ -1,7 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using Mission06_Polanco.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+SQLitePCL.Batteries.Init();
+
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<FilmCollectionContext>(options =>
+{
+    options.UseSqlite(builder.Configuration["ConnectionStrings:CollectionConnection"]);
+});
 
 var app = builder.Build();
 

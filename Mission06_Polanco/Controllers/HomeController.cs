@@ -6,13 +6,12 @@ namespace Mission06_Polanco.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private FilmCollectionContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(FilmCollectionContext Films) //Constructor
         {
-            _logger = logger;
+            _context = Films;
         }
-
         public IActionResult Index()
         {
             return View();
@@ -22,12 +21,20 @@ namespace Mission06_Polanco.Controllers
         {
             return View();
         }
-
-        public IActionResult Collection()   
+        [HttpGet]
+        public IActionResult Collection() 
         {
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Collection(Collection response) // We want to receive an instance of the model we created that has all the information of the form 
+        {
+            _context.Films.Add(response); //Adds the records to the database     
+            _context.SaveChanges();     
+
+            return View("Confirmation", response);
+        }
 
 
         public IActionResult Privacy()
