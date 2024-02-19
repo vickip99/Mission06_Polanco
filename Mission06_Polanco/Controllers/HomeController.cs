@@ -36,6 +36,47 @@ namespace Mission06_Polanco.Controllers
             return View("Confirmation", response);
         }
 
+        public IActionResult CollectionList()
+        {
+            var collections = _context.Films
+                .OrderBy(x => x.FilmID).ToList();
+            return View(collections);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var recordToEdit = _context.Films
+                .Single(x => x.FilmID == id);
+            return View("Collection", recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Collection UpdatedInfo)
+        {
+            _context.Update(UpdatedInfo);
+            _context.SaveChanges();
+            return RedirectToAction("CollectionList");
+
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var DeleteRecord = _context.Films
+                .Single(x => x.FilmID == id);
+            return View(DeleteRecord);  
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Collection DeleteRecord)
+        {
+            _context.Films.Remove(DeleteRecord);
+            _context.SaveChanges();
+
+            return RedirectToAction("CollectionList");
+        }
+
 
         public IActionResult Privacy()
         {
