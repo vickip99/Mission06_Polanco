@@ -3,8 +3,6 @@
 *@
 @{
 }
-<table >
-    <thead>
         <tr>
             <td>Category</td>
             <td>Title</td>
@@ -17,7 +15,23 @@
         </tr>
     </thead>
 
+    @foreach (var row in Model)
+    {
     <tbody>
+        <tr>
+            <td>@row.Category</td>
+            <td>@row.Title</td>
+            <td>@row.Year</td>
+            <td>@row.Director</td>
+            <td>@row.Rating</td>
+            <td>@row.Edited</td>
+            <td>@row.LentTo</td>
+            <td>@row.Notes</td>
 
+            <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@row.FilmID">Edit</a></td>
+            <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@row.FilmID">Delete</a></td>
+
+        </tr>
     </tbody>
+    }
 </table>
