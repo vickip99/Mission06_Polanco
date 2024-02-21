@@ -1,5 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_Polanco.Models
 {
@@ -7,20 +8,25 @@ namespace Mission06_Polanco.Models
     {
         [Key]
         [Required] 
-        public int FilmID { get; set; }
-        [Required]
-        public string Category { get; set; }
+        public int MovieId { get; set; }
+
+        [ForeignKey("Categories")]
+        public int CategoryId { get; set; }
+        public Categories Category { get; set; }
+
         [Required]
         public string Title { get; set; }
         [Required]
         public int Year { get; set; }
-        [Required]
         public string Director { get; set; }
-        [Required]
+
         public string Rating { get; set; }
-        public bool? Edited { get; set; }
-        public string? LentTo { get; set; }
-        public string? Notes { get; set; }  
+        [Required]
+        public bool Edited { get; set; }
+        public string LentTo { get; set; }
+        [Required]
+        public int CopiedToPlex { get; set; }  
+        public string Notes { get; set; }  
 
     }
 }

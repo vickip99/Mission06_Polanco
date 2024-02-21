@@ -17,11 +17,17 @@
                                 <p>Please fill out the film information below. </p>
 
                                 <form class="movie-form" method="post">
-                                    <input type="hidden" asp-for="FilmID" />
+                                    <input type="hidden" asp-for="MovieId" />
 
                                     <div class="form-group">
                                         <label asp-for=Category>Category</label>
-                                        <input asp-for=Category type="text" id="category" class="form-control" required />
+                                        <select asp-for="CategoryId" required>
+                                            <option value="">Choose Category</option>
+                                            @foreach (Categories category in ViewBag.Categories)
+                                            {
+                                                <option value="@category.CategoryId">@category.CategoryName</option>
+                                            }
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label asp-for=Title>Title</label>
@@ -33,11 +39,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label asp-for=Director>Director</label>
-                                        <input asp-for=Director id="director" class="form-control" required />
+                                        <input asp-for=Director id="director" class="form-control"/>
                                     </div>
                                     <div class="form-group">
                                         <label asp-for=Rating>Rating</label>
-                                        <select asp-for=Rating class="form-control" required >
+                                        <select asp-for=Rating class="form-control">
                                             <option value="G">G</option>
                                             <option value="PG">PG</option>
                                             <option value="PG-13">PG-13</option>
@@ -46,8 +52,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label asp-for=Edited>Edited</label>
-                                        <select asp-for=Edited id="edited" class="form-control">
-                                            <option value="Null"></option>
+                                        <select asp-for=Edited id="edited" class="form-control" required>
                                             <option value="Yes">Yes</option>
                                             <option value="No">No</option>
                                         </select>
@@ -56,6 +61,14 @@
                                     <div class="form-group">
                                         <label asp-for=LentTo>Lent To</label>
                                         <input asp-for=LentTo id="LentTo" class="form-control">
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label asp-for=CopiedToPlex>Copied To Plex</label>
+                                        <select asp-for=CopiedToPlex id="CopiedToPlex" class="form-control" required>
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
                                     </div>
                                     <br />
                                     <div class="form-group">

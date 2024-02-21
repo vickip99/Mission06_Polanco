@@ -9,7 +9,7 @@
 <table class="table table-bordered">
     <thead class="fw-bold">
         <tr>
-            <td>Category</td>
+            <td>Categories</td>
             <td>Title</td>
             <td>Year</td>
             <td>Director</td>
@@ -24,17 +24,18 @@
     {
     <tbody>
         <tr>
-            <td>@row.Category</td>
+            <td>@row.CategoryId</td>
             <td>@row.Title</td>
             <td>@row.Year</td>
             <td>@row.Director</td>
             <td>@row.Rating</td>
             <td>@row.Edited</td>
             <td>@row.LentTo</td>
+            <td>@row.CopiedToPlex</td>
             <td>@row.Notes</td>
 
-            <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@row.FilmID">Edit</a></td>
-            <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@row.FilmID">Delete</a></td>
+            <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@row.MovieId">Edit</a></td>
+            <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@row.MovieId">Delete</a></td>
 
         </tr>
     </tbody>

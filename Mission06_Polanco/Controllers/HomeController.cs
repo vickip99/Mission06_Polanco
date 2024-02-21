@@ -24,13 +24,14 @@ namespace Mission06_Polanco.Controllers
         [HttpGet]
         public IActionResult Collection() 
         {
+            ViewBag.Categories = _context.Categories.ToList();
             return View();
         }
 
         [HttpPost]
         public IActionResult Collection(Collection response) // We want to receive an instance of the model we created that has all the information of the form 
         {
-            _context.Films.Add(response); //Adds the records to the database     
+            _context.Movies.Add(response); //Adds the records to the database     
             _context.SaveChanges();     
 
             return View("Confirmation", response);
@@ -38,16 +39,16 @@ namespace Mission06_Polanco.Controllers
 
         public IActionResult CollectionList()
         {
-            var collections = _context.Films
-                .OrderBy(x => x.FilmID).ToList();
+            var collections = _context.Movies
+                .OrderBy(x => x.MovieId).ToList();
             return View(collections);
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var recordToEdit = _context.Films
-                .Single(x => x.FilmID == id);
+            var recordToEdit = _context.Movies
+                .Single(x => x.MovieId == id);
             return View("Collection", recordToEdit);
         }
 
@@ -63,15 +64,15 @@ namespace Mission06_Polanco.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var DeleteRecord = _context.Films
-                .Single(x => x.FilmID == id);
+            var DeleteRecord = _context.Movies
+                .Single(x => x.MovieId == id);
             return View(DeleteRecord);  
         }
 
         [HttpPost]
         public IActionResult Delete(Collection DeleteRecord)
         {
-            _context.Films.Remove(DeleteRecord);
+            _context.Movies.Remove(DeleteRecord);
             _context.SaveChanges();
 
             return RedirectToAction("CollectionList");
