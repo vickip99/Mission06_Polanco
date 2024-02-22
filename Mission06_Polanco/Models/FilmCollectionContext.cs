@@ -13,6 +13,10 @@ namespace Mission06_Polanco.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Collection>()
+            .HasOne(c => c.Category)
+            .WithMany()
+            .HasForeignKey(c => c.CategoryId);
         }
 
     }

@@ -7,7 +7,7 @@ namespace Mission06_Polanco.Models
         [Key]
         public int CategoryId { get; set; }
         [Required]
-        public required string CategoryName { get; set; }
+        public string CategoryName { get; set; }
 
 
     }

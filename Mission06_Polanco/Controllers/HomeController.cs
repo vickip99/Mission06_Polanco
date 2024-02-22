@@ -24,23 +24,30 @@ namespace Mission06_Polanco.Controllers
         [HttpGet]
         public IActionResult Collection() 
         {
-            ViewBag.Categories = _context.Categories.ToList();
-            return View();
+            ViewBag.Categories = _context.Categories
+                .ToList();
+            return View("Collection", new Collection());
         }
 
         [HttpPost]
         public IActionResult Collection(Collection response) // We want to receive an instance of the model we created that has all the information of the form 
         {
-            _context.Movies.Add(response); //Adds the records to the database     
-            _context.SaveChanges();     
+           // if (ModelState.IsValid)
+           // {
+                _context.Movies.Add(response); //Adds the records to the database     
+                _context.SaveChanges();
 
-            return View("Confirmation", response);
+                return View("Confirmation", response);
+           // }
+            // else { ViewBag.Categories = _context.Categories.ToList(); return View(response);}
         }
 
         public IActionResult CollectionList()
-        {
+        { //linq
             var collections = _context.Movies
-                .OrderBy(x => x.MovieId).ToList();
+                .OrderBy(x => x.MovieId)
+                .ToList();
+
             return View(collections);
         }
 
@@ -49,6 +56,9 @@ namespace Mission06_Polanco.Controllers
         {
             var recordToEdit = _context.Movies
                 .Single(x => x.MovieId == id);
+
+            ViewBag.Categories = _context.Categories.ToList();  
+
             return View("Collection", recordToEdit);
         }
 

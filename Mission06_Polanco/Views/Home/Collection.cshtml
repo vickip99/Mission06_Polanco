@@ -17,10 +17,9 @@
                                 <p>Please fill out the film information below. </p>
 
                                 <form class="movie-form" method="post">
-                                    <input type="hidden" asp-for="MovieId" />
-
+                                    <!-- Category -->
                                     <div class="form-group">
-                                        <label asp-for=Category>Category</label>
+                                        <label asp-for=CategoryId>Category</label>
                                         <select asp-for="CategoryId" required>
                                             <option value="">Choose Category</option>
                                             @foreach (Categories category in ViewBag.Categories)
@@ -29,18 +28,28 @@
                                             }
                                         </select>
                                     </div>
+
+                                    <!-- Title -->
                                     <div class="form-group">
                                         <label asp-for=Title>Title</label>
                                         <input asp-for=Title id="title" class="form-control" required />
+                                        <div class="invalid-feedback">Title is required.</div>
                                     </div>
+
+                                    <!-- Year -->
                                     <div class="form-group">
                                         <label asp-for=Year>Year</label>
-                                        <input asp-for=Year id="year" class="form-control" required />
+                                        <input asp-for=Year id="year" class="form-control" required min="1888" />
+                                        <div class="invalid-feedback">Year is required.</div>
                                     </div>
+
+                                    <!-- Director -->
                                     <div class="form-group">
                                         <label asp-for=Director>Director</label>
-                                        <input asp-for=Director id="director" class="form-control"/>
+                                        <input asp-for=Director id="director" class="form-control" />
                                     </div>
+
+                                    <!-- Rating -->
                                     <div class="form-group">
                                         <label asp-for=Rating>Rating</label>
                                         <select asp-for=Rating class="form-control">
@@ -50,35 +59,45 @@
                                             <option value="R">R</option>
                                         </select>
                                     </div>
+
+                                    <!-- Edited -->
                                     <div class="form-group">
                                         <label asp-for=Edited>Edited</label>
                                         <select asp-for=Edited id="edited" class="form-control" required>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
+                                            <option value="">Choose</option>
+                                            <option value="1">Yes</option>>
+                                            <option value="0">No</option>
                                         </select>
+                                        <div class="invalid-feedback">Edited is required.</div>
                                     </div>
-                                    <br />
+
+                                    <!-- Lent To -->
                                     <div class="form-group">
                                         <label asp-for=LentTo>Lent To</label>
                                         <input asp-for=LentTo id="LentTo" class="form-control">
                                     </div>
-                                    <br />
+
+                                    <!-- CopiedToPlex -->
                                     <div class="form-group">
                                         <label asp-for=CopiedToPlex>Copied To Plex</label>
                                         <select asp-for=CopiedToPlex id="CopiedToPlex" class="form-control" required>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
+                                            <option value="">Choose</option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
                                         </select>
+                                        <div class="invalid-feedback">Copied To Plex is required.</div>
                                     </div>
-                                    <br />
+
+                                    <!-- Notes -->
                                     <div class="form-group">
                                         <label asp-for=Notes>Notes</label>
                                         <input asp-for=Notes id="Notes" class="form-control" maxlength="25" />
                                     </div>
-                                    <br />
-                                    <button type="submit" style="background-color: #30BDFE; color: white; padding: 10px 20px; border: none; border-radius: 4px;">Add to Collection</button>
-                                </form>
 
+
+                                    <button type="submit" style="background-color: #30BDFE; color: white; padding: 10px 20px; border: none; border-radius: 4px;">Add to Collection</button>
+                                    </form>
+    
                             </div>
                             <img width="370px" src="~/assets/collection.jpg" alt="..." />
                         </div>

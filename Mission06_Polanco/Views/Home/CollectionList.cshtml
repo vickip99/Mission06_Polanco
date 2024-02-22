@@ -3,38 +3,29 @@
 *@
 @{
 }
-<<<<<<< HEAD
-<table >
-    <thead>
-=======
 
 @model List<Collection>
 
 <table class="table table-bordered">
     <thead class="fw-bold">
-
         <tr>
+            <td>MovieId</td>
             <td>Categories</td>
             <td>Title</td>
             <td>Year</td>
             <td>Director</td>
             <td>Rating</td>
             <td>Edited</td>
-            <td>Lent To</td>
+            <td>LentTo</td>
+            <td>CopiedToPlex</td>
             <td>Notes</td>
         </tr>
     </thead>
-
-<<<<<<< HEAD
     <tbody>
-
-    </tbody>
-</table>
-
     @foreach (var row in Model)
     {
-    <tbody>
         <tr>
+            <td>@row.MovieId</td>
             <td>@row.CategoryId</td>
             <td>@row.Title</td>
             <td>@row.Year</td>
@@ -49,7 +40,7 @@
             <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@row.MovieId">Delete</a></td>
 
         </tr>
+        }
     </tbody>
-    }
 </table>
 
