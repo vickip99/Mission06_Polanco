@@ -10,7 +10,7 @@ namespace Mission06_Polanco.Models
         [Required]
         public int MovieId { get; set; }
 
-        [ForeignKey("CategoryId")]
+        [ForeignKey("CategoryId")] //by default is required
         public int? CategoryId { get; set; }
         public Categories? Category { get; set; }
 
@@ -32,7 +32,6 @@ namespace Mission06_Polanco.Models
 
         [Required(ErrorMessage = "Copied To Plex is required.")]
         public int CopiedToPlex { get; set; }
-
 
         public string? Notes { get; set; }  
 

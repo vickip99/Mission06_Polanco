@@ -12,7 +12,7 @@ namespace Mission06_Polanco.Models
         public DbSet<Categories> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        {  //setting up the relationship of Movies with Categories table
             modelBuilder.Entity<Collection>()
             .HasOne(c => c.Category)
             .WithMany()

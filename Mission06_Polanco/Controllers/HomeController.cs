@@ -21,6 +21,7 @@ namespace Mission06_Polanco.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public IActionResult Collection() 
         {
@@ -32,18 +33,21 @@ namespace Mission06_Polanco.Controllers
         [HttpPost]
         public IActionResult Collection(Collection response) // We want to receive an instance of the model we created that has all the information of the form 
         {
-           // if (ModelState.IsValid)
-           // {
+           if (ModelState.IsValid)
+           {
                 _context.Movies.Add(response); //Adds the records to the database     
                 _context.SaveChanges();
 
                 return View("Confirmation", response);
-           // }
-            // else { ViewBag.Categories = _context.Categories.ToList(); return View(response);}
+           }
+           else
+            { 
+                ViewBag.Categories = _context.Categories.ToList(); return View(response);
+            }
         }
 
         public IActionResult CollectionList()
-        { //linq
+        { //linq basically sql for csharp
             var collections = _context.Movies
                 .OrderBy(x => x.MovieId)
                 .ToList();
@@ -51,17 +55,19 @@ namespace Mission06_Polanco.Controllers
             return View(collections);
         }
 
+        //How to edit records from database code starts
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var recordToEdit = _context.Movies
-                .Single(x => x.MovieId == id);
+            var recordToEdit = _context.Movies //creating a variable that will hold the context of the movies table
+                .Single(x => x.MovieId == id); 
 
             ViewBag.Categories = _context.Categories.ToList();  
 
             return View("Collection", recordToEdit);
         }
 
+        
         [HttpPost]
         public IActionResult Edit(Collection UpdatedInfo)
         {
@@ -70,7 +76,12 @@ namespace Mission06_Polanco.Controllers
             return RedirectToAction("CollectionList");
 
         }
+        //END
 
+
+
+
+        //How to delete records from database code starts
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -87,8 +98,7 @@ namespace Mission06_Polanco.Controllers
 
             return RedirectToAction("CollectionList");
         }
-
-
+        //END
         public IActionResult Privacy()
         {
             return View();

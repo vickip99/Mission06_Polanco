@@ -17,6 +17,8 @@
                                 <p>Please fill out the film information below. </p>
 
                                 <form class="movie-form" method="post">
+                                    <input type="hidden" asp-for="MovieId" /> <!--Hiding Movie Id so user doesn't see it but we need it for editing & updating records-->
+
                                     <!-- Category -->
                                     <div class="form-group">
                                         <label asp-for=CategoryId>Category</label>
@@ -32,14 +34,14 @@
                                     <!-- Title -->
                                     <div class="form-group">
                                         <label asp-for=Title>Title</label>
-                                        <input asp-for=Title id="title" class="form-control" required />
+                                        <input asp-for=Title id="title" class="form-control"/>
                                         <div class="invalid-feedback">Title is required.</div>
                                     </div>
 
                                     <!-- Year -->
                                     <div class="form-group">
                                         <label asp-for=Year>Year</label>
-                                        <input asp-for=Year id="year" class="form-control" required min="1888" />
+                                        <input asp-for=Year id="year" class="form-control"/>
                                         <div class="invalid-feedback">Year is required.</div>
                                     </div>
 
@@ -63,8 +65,7 @@
                                     <!-- Edited -->
                                     <div class="form-group">
                                         <label asp-for=Edited>Edited</label>
-                                        <select asp-for=Edited id="edited" class="form-control" required>
-                                            <option value="">Choose</option>
+                                        <select asp-for=Edited id="edited" class="form-control">
                                             <option value="1">Yes</option>>
                                             <option value="0">No</option>
                                         </select>
@@ -80,8 +81,7 @@
                                     <!-- CopiedToPlex -->
                                     <div class="form-group">
                                         <label asp-for=CopiedToPlex>Copied To Plex</label>
-                                        <select asp-for=CopiedToPlex id="CopiedToPlex" class="form-control" required>
-                                            <option value="">Choose</option>
+                                        <select asp-for=CopiedToPlex id="CopiedToPlex" class="form-control">
                                             <option value="1">Yes</option>
                                             <option value="0">No</option>
                                         </select>
@@ -97,7 +97,7 @@
 
                                     <button type="submit" style="background-color: #30BDFE; color: white; padding: 10px 20px; border: none; border-radius: 4px;">Add to Collection</button>
                                     </form>
-    
+                                <div asp-validation-summary="All"></div>
                             </div>
                             <img width="370px" src="~/assets/collection.jpg" alt="..." />
                         </div>

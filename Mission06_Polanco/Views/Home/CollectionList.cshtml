@@ -6,41 +6,46 @@
 
 @model List<Collection>
 
-<table class="table table-bordered">
-    <thead class="fw-bold">
+<table class="table table-bordered table-striped">
+    <thead class="fw-bolder text-white bg-dark">
         <tr>
-            <td>MovieId</td>
-            <td>Categories</td>
-            <td>Title</td>
-            <td>Year</td>
-            <td>Director</td>
-            <td>Rating</td>
-            <td>Edited</td>
-            <td>LentTo</td>
-            <td>CopiedToPlex</td>
-            <td>Notes</td>
+            <th>Movie ID</th>
+            <th>Categories</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Rating</th>
+            <th>Edited</th>
+            <th>Lent To</th>
+            <th>Copied To Plex</th>
+            <th>Notes</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
-    @foreach (var row in Model)
-    {
-        <tr>
-            <td>@row.MovieId</td>
-            <td>@row.CategoryId</td>
-            <td>@row.Title</td>
-            <td>@row.Year</td>
-            <td>@row.Director</td>
-            <td>@row.Rating</td>
-            <td>@row.Edited</td>
-            <td>@row.LentTo</td>
-            <td>@row.CopiedToPlex</td>
-            <td>@row.Notes</td>
-
-            <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@row.MovieId">Edit</a></td>
-            <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@row.MovieId">Delete</a></td>
-
-        </tr>
+        @foreach (var row in Model)
+        {
+            <tr>
+                <td>@row.MovieId</td>
+                <td>@row.CategoryId</td>
+                <td>@row.Title</td>
+                <td>@row.Year</td>
+                <td>@row.Director</td>
+                <td>@row.Rating</td>
+                <td>@row.Edited</td>
+                <td>@row.LentTo</td>
+                <td>@row.CopiedToPlex</td>
+                <td>@row.Notes</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info btn-light-blue" asp-controller="Home" asp-action="Edit" asp-route-id="@row.MovieId">Edit</a>
+                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@row.MovieId">Delete</a>
+                    </div>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+
+
 

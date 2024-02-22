@@ -1,3 +1,43 @@
+.table thead th {
+    font-weight: bold;
+    color: white;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: white; 
+}
+
+.table tbody tr:hover {
+    background-color: #e5e5e5;
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    vertical-align: middle;
+}
+
+.btn-group .btn {
+    margin-right: 5px;
+}
+
+.btn-light-blue {
+    background-color: #87CEFA; 
+    color: white;
+    border-color: #87CEFA; 
+}
+
+.btn-light-blue:hover {
+        background-color: #5bc0de; 
+        border-color: #46b8da;
+} 
+
+
+
 html {
   font-size: 14px;
 }
